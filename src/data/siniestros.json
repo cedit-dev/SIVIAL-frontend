@@ -1,0 +1,1168 @@
+[
+  {
+    "id": "2bb2ae97-6b48-43e4-8eb1-606ad46a46f2",
+    "fecha": "2024-10-24",
+    "hora": "21:58",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "camion"
+    ],
+    "via": "Carrera 12",
+    "descripcion": "Siniestro solo_danos en La Costa involucrando motocicleta y camion.",
+    "lat": 8.226670194745916,
+    "lng": -73.34294191658084,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "9ab4669d-83cc-434c-a31d-4a0e0afb641b",
+    "fecha": "2023-11-11",
+    "hora": "12:26",
+    "tipo": "caida_motocicleta",
+    "gravedad": "grave",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bicicleta"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro grave en Calle 11 involucrando bicicleta.",
+    "lat": 8.222732865043268,
+    "lng": -73.34002572558234,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "e1c61d0c-05a4-4f87-bfad-6a027a4e4be0",
+    "fecha": "2024-06-24",
+    "hora": "19:14",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Calle 11",
+    "descripcion": "Siniestro solo_danos en Carrera 12 involucrando motocicleta.",
+    "lat": 8.239982002072413,
+    "lng": -73.36232603254034,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "87768c2b-86e6-480e-8344-283ebf133a28",
+    "fecha": "2024-09-16",
+    "hora": "10:15",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "camion"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro solo_danos en Barrio Los Pinos involucrando motocicleta y camion.",
+    "lat": 8.228892288047653,
+    "lng": -73.35160144539336,
+    "condicion_clima": "lluvia",
+    "condicion_via": "humeda",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "c89530a7-d0bc-4eb9-a9a6-8bcec5369a31",
+    "fecha": "2023-09-26",
+    "hora": "01:22",
+    "tipo": "caida_motocicleta",
+    "gravedad": "grave",
+    "victimas": 3,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus"
+    ],
+    "via": "Calle 11",
+    "descripcion": "Siniestro grave en Calle 11 involucrando bus.",
+    "lat": 8.220910554779339,
+    "lng": -73.34230588691193,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "25c3cf83-67a0-4aec-8539-b966b804ee28",
+    "fecha": "2024-06-28",
+    "hora": "05:06",
+    "tipo": "choque",
+    "gravedad": "fatal",
+    "victimas": 3,
+    "fallecidos": 3,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Av. Francisco Fernandez de Contreras",
+    "descripcion": "Siniestro fatal en Carrera 12 involucrando automovil.",
+    "lat": 8.227894673419977,
+    "lng": -73.35532003388214,
+    "condicion_clima": "despejado",
+    "condicion_via": "humeda",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "2576d8aa-6f7c-4b35-8109-ad22f2728a36",
+    "fecha": "2024-12-23",
+    "hora": "05:34",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus",
+      "peaton"
+    ],
+    "via": "Calle 11",
+    "descripcion": "Siniestro grave en Carrera 12 involucrando bus y peaton.",
+    "lat": 8.245941372503678,
+    "lng": -73.36896980023609,
+    "condicion_clima": "despejado",
+    "condicion_via": "deteriorada",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "939b7ee7-e3c3-4fe6-9d79-596ca2c9940e",
+    "fecha": "2023-08-13",
+    "hora": "12:34",
+    "tipo": "atropello",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "peaton"
+    ],
+    "via": "Barrio Los Pinos",
+    "descripcion": "Siniestro solo_danos en Calle 10 involucrando motocicleta y peaton.",
+    "lat": 8.22827617779516,
+    "lng": -73.34877383083678,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "54b0934d-e03f-4319-9a0b-967f70a225a3",
+    "fecha": "2023-03-04",
+    "hora": "16:34",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Barrio Los Pinos",
+    "descripcion": "Siniestro solo_danos en Calle 10 involucrando motocicleta.",
+    "lat": 8.238892816450573,
+    "lng": -73.34540657026791,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "martes"
+  },
+  {
+    "id": "6e6ad9cd-d4f3-400d-9b78-2a28b57b9e52",
+    "fecha": "2024-12-12",
+    "hora": "09:16",
+    "tipo": "choque",
+    "gravedad": "leve",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus",
+      "automovil"
+    ],
+    "via": "Simon Bolivar",
+    "descripcion": "Siniestro leve en Barrio Los Pinos involucrando bus y automovil.",
+    "lat": 8.24273210990337,
+    "lng": -73.34033457001298,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "martes"
+  },
+  {
+    "id": "4977f879-13ab-4808-af1b-5e5de3cfa889",
+    "fecha": "2024-04-02",
+    "hora": "07:00",
+    "tipo": "volcamiento",
+    "gravedad": "grave",
+    "victimas": 3,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bicicleta"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro grave en San Agustin involucrando bicicleta.",
+    "lat": 8.232904003784842,
+    "lng": -73.35067928511043,
+    "condicion_clima": "despejado",
+    "condicion_via": "humeda",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "b551bfb4-2882-4c42-9cdf-1bdab4b0cde3",
+    "fecha": "2023-07-27",
+    "hora": "16:11",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro leve en Calle 10 involucrando automovil.",
+    "lat": 8.23495570640703,
+    "lng": -73.35560915122781,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "94cf2e34-8108-4c6f-9277-f69c5e7a1c3f",
+    "fecha": "2023-08-23",
+    "hora": "18:10",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro solo_danos en El Mercado involucrando motocicleta.",
+    "lat": 8.226858852998204,
+    "lng": -73.3659074908609,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "9cd6e9ae-dbe2-4174-9ead-35baca52b06d",
+    "fecha": "2023-03-23",
+    "hora": "11:21",
+    "tipo": "caida_motocicleta",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Carrera 12",
+    "descripcion": "Siniestro leve en Carrera 14 involucrando automovil.",
+    "lat": 8.236203067934214,
+    "lng": -73.35930258816441,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "2ce33e24-5ab7-4ea7-8f89-552c0e9f5295",
+    "fecha": "2023-08-18",
+    "hora": "01:21",
+    "tipo": "atropello",
+    "gravedad": "fatal",
+    "victimas": 2,
+    "fallecidos": 1,
+    "vehiculos_involucrados": [
+      "camion",
+      "automovil"
+    ],
+    "via": "Calle 11",
+    "descripcion": "Siniestro fatal en San Agustin involucrando camion y automovil.",
+    "lat": 8.248567198491813,
+    "lng": -73.35417460857389,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "a50f4800-7359-426d-adc6-e10efae57c5e",
+    "fecha": "2024-10-06",
+    "hora": "16:55",
+    "tipo": "choque_animal",
+    "gravedad": "fatal",
+    "victimas": 3,
+    "fallecidos": 2,
+    "vehiculos_involucrados": [
+      "bicicleta",
+      "automovil"
+    ],
+    "via": "Simon Bolivar",
+    "descripcion": "Siniestro fatal en San Agustin involucrando bicicleta y automovil.",
+    "lat": 8.242157343743564,
+    "lng": -73.35645920168747,
+    "condicion_clima": "lluvia",
+    "condicion_via": "humeda",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "f5dd908d-4172-4142-9069-44c48e3b2311",
+    "fecha": "2023-11-15",
+    "hora": "20:04",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro solo_danos en El Mercado involucrando motocicleta.",
+    "lat": 8.2445841826362,
+    "lng": -73.35501226783329,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "d90241a9-074b-4a4f-8d93-5bf41678c14a",
+    "fecha": "2023-03-15",
+    "hora": "12:59",
+    "tipo": "caida_motocicleta",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bicicleta",
+      "automovil"
+    ],
+    "via": "La Costa",
+    "descripcion": "Siniestro leve en Calle 11 involucrando bicicleta y automovil.",
+    "lat": 8.24047508652018,
+    "lng": -73.35485159324652,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "191f58fa-01ce-47c2-a158-148372e97de3",
+    "fecha": "2024-10-09",
+    "hora": "14:31",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus",
+      "peaton"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro leve en La Costa involucrando bus y peaton.",
+    "lat": 8.248084585895663,
+    "lng": -73.36621897599704,
+    "condicion_clima": "niebla",
+    "condicion_via": "humeda",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "c57d8228-1f6a-4b93-b8a9-0daa54ec21e0",
+    "fecha": "2023-12-27",
+    "hora": "14:50",
+    "tipo": "caida_motocicleta",
+    "gravedad": "grave",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro grave en La Costa involucrando camion.",
+    "lat": 8.223962922405743,
+    "lng": -73.3479902807288,
+    "condicion_clima": "despejado",
+    "condicion_via": "deteriorada",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "fb635f8d-e425-4b4e-bea4-2fd7de17ad01",
+    "fecha": "2024-07-10",
+    "hora": "20:36",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Barrio Los Pinos",
+    "descripcion": "Siniestro solo_danos en Barrio Los Pinos involucrando motocicleta.",
+    "lat": 8.222188977169642,
+    "lng": -73.3431533808442,
+    "condicion_clima": "niebla",
+    "condicion_via": "deteriorada",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "384fc0ec-4230-4bf4-92f2-5423735a53ed",
+    "fecha": "2023-09-14",
+    "hora": "03:11",
+    "tipo": "otro",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion",
+      "automovil"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro leve en La Costa involucrando camion y automovil.",
+    "lat": 8.237401374866216,
+    "lng": -73.34545704023088,
+    "condicion_clima": "niebla",
+    "condicion_via": "deteriorada",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "c12920b8-a31a-4431-af29-5b9a322a4c71",
+    "fecha": "2024-11-15",
+    "hora": "22:25",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro solo_danos en Av. Francisco Fernandez de Contreras involucrando motocicleta.",
+    "lat": 8.243942321668726,
+    "lng": -73.35725735819008,
+    "condicion_clima": "niebla",
+    "condicion_via": "deteriorada",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "456d7c5d-f967-4e6d-9f87-49552415c0b7",
+    "fecha": "2024-06-11",
+    "hora": "05:10",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil",
+      "peaton"
+    ],
+    "via": "Carrera 12",
+    "descripcion": "Siniestro grave en Av. Francisco Fernandez de Contreras involucrando automovil y peaton.",
+    "lat": 8.237865408011604,
+    "lng": -73.36062035865015,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "4d3df8e1-d26e-4982-8c20-db0e85a62475",
+    "fecha": "2024-01-10",
+    "hora": "15:57",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Simon Bolivar",
+    "descripcion": "Siniestro leve en Calle 10 involucrando automovil.",
+    "lat": 8.243118748674839,
+    "lng": -73.36968004847945,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "862180a4-c182-4f35-8f78-0001bc1d6140",
+    "fecha": "2024-05-08",
+    "hora": "07:39",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 3,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion",
+      "peaton"
+    ],
+    "via": "La Costa",
+    "descripcion": "Siniestro grave en La Costa involucrando camion y peaton.",
+    "lat": 8.23496276052876,
+    "lng": -73.35664735012533,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "29788c6c-f401-421f-b903-8d10125b25a0",
+    "fecha": "2024-05-22",
+    "hora": "13:05",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro solo_danos en Simon Bolivar involucrando motocicleta.",
+    "lat": 8.220363788203146,
+    "lng": -73.34542734044358,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "7eb31d40-b684-49d5-b160-c7dd46a4658e",
+    "fecha": "2023-02-02",
+    "hora": "02:25",
+    "tipo": "atropello",
+    "gravedad": "fatal",
+    "victimas": 3,
+    "fallecidos": 1,
+    "vehiculos_involucrados": [
+      "bicicleta",
+      "peaton"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro fatal en Av. Francisco Fernandez de Contreras involucrando bicicleta y peaton.",
+    "lat": 8.240134274558557,
+    "lng": -73.35462623969552,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "53874781-ddfb-4d02-af92-e6d1ee565d55",
+    "fecha": "2024-12-06",
+    "hora": "06:10",
+    "tipo": "otro",
+    "gravedad": "fatal",
+    "victimas": 4,
+    "fallecidos": 2,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Simon Bolivar",
+    "descripcion": "Siniestro fatal en Carrera 14 involucrando automovil.",
+    "lat": 8.233930977874518,
+    "lng": -73.35688355111682,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "d9c3a7c2-a577-4afb-9589-5564c1906cda",
+    "fecha": "2023-02-18",
+    "hora": "23:40",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Barrio Los Pinos",
+    "descripcion": "Siniestro solo_danos en Carrera 14 involucrando motocicleta.",
+    "lat": 8.229023433821594,
+    "lng": -73.36359147628987,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "b00c888e-3482-44af-be7a-f175a6aec345",
+    "fecha": "2024-08-10",
+    "hora": "11:39",
+    "tipo": "otro",
+    "gravedad": "grave",
+    "victimas": 4,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro grave en Calle 11 involucrando automovil.",
+    "lat": 8.222387744671742,
+    "lng": -73.34208309614591,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "5e61d6e2-3474-44c2-a0f6-c40e9460b976",
+    "fecha": "2024-07-06",
+    "hora": "18:35",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "camion"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro solo_danos en La Costa involucrando motocicleta y camion.",
+    "lat": 8.235686899439589,
+    "lng": -73.36062158976073,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "973baed6-73fe-4bd6-a42e-b4698e79e834",
+    "fecha": "2024-01-19",
+    "hora": "12:49",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bicicleta",
+      "peaton"
+    ],
+    "via": "Simon Bolivar",
+    "descripcion": "Siniestro leve en Av. Francisco Fernandez de Contreras involucrando bicicleta y peaton.",
+    "lat": 8.241760829153076,
+    "lng": -73.36213159952361,
+    "condicion_clima": "niebla",
+    "condicion_via": "deteriorada",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "3c8a16c2-855f-43d7-8254-028ec968db49",
+    "fecha": "2024-11-25",
+    "hora": "08:23",
+    "tipo": "choque_animal",
+    "gravedad": "grave",
+    "victimas": 3,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Carrera 14",
+    "descripcion": "Siniestro grave en Calle 10 involucrando automovil.",
+    "lat": 8.22888383585917,
+    "lng": -73.3557622104618,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "490f5d2c-db70-4519-b38f-83664797230d",
+    "fecha": "2024-03-13",
+    "hora": "21:36",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro solo_danos en Carrera 14 involucrando motocicleta.",
+    "lat": 8.232621122184668,
+    "lng": -73.34701513216989,
+    "condicion_clima": "despejado",
+    "condicion_via": "humeda",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "f3ed6777-3cfc-4768-8644-1644b6c8d69c",
+    "fecha": "2024-09-27",
+    "hora": "01:48",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion"
+    ],
+    "via": "La Costa",
+    "descripcion": "Siniestro leve en Carrera 12 involucrando camion.",
+    "lat": 8.220070717316844,
+    "lng": -73.34520637988138,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "1cc5df40-0b6d-423a-8019-1a97ad5824a2",
+    "fecha": "2024-05-16",
+    "hora": "21:56",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Carrera 14",
+    "descripcion": "Siniestro solo_danos en La Costa involucrando motocicleta.",
+    "lat": 8.220404146984619,
+    "lng": -73.34188611230266,
+    "condicion_clima": "niebla",
+    "condicion_via": "humeda",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "0d6e95cf-cef5-4560-b26d-7e2a2a61634d",
+    "fecha": "2023-09-05",
+    "hora": "22:48",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "bus"
+    ],
+    "via": "La Costa",
+    "descripcion": "Siniestro solo_danos en Calle 11 involucrando motocicleta y bus.",
+    "lat": 8.248047158314298,
+    "lng": -73.36853668520398,
+    "condicion_clima": "niebla",
+    "condicion_via": "humeda",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "302594a7-15d4-4f99-8a5e-f47c2503bdef",
+    "fecha": "2024-10-25",
+    "hora": "22:01",
+    "tipo": "choque_animal",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro solo_danos en Simon Bolivar involucrando motocicleta.",
+    "lat": 8.237273141729553,
+    "lng": -73.34350601489757,
+    "condicion_clima": "lluvia",
+    "condicion_via": "humeda",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "319d4e37-8281-4cbe-b9f0-b51bbb5ea85e",
+    "fecha": "2024-02-06",
+    "hora": "16:45",
+    "tipo": "choque",
+    "gravedad": "leve",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Calle 11",
+    "descripcion": "Siniestro leve en San Agustin involucrando automovil.",
+    "lat": 8.220793165813854,
+    "lng": -73.34785512588182,
+    "condicion_clima": "niebla",
+    "condicion_via": "deteriorada",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "41702604-c01f-4574-9dc1-c07a2d20d935",
+    "fecha": "2024-08-28",
+    "hora": "05:31",
+    "tipo": "otro",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro leve en Calle 11 involucrando bus.",
+    "lat": 8.235496949470873,
+    "lng": -73.34825660156449,
+    "condicion_clima": "niebla",
+    "condicion_via": "humeda",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "c197e68d-2d53-4cd3-aedf-936f44606df9",
+    "fecha": "2023-05-23",
+    "hora": "07:23",
+    "tipo": "caida_motocicleta",
+    "gravedad": "fatal",
+    "victimas": 5,
+    "fallecidos": 3,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Carrera 12",
+    "descripcion": "Siniestro fatal en San Agustin involucrando automovil.",
+    "lat": 8.244032309959804,
+    "lng": -73.36384909727826,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "martes"
+  },
+  {
+    "id": "8ca88151-952c-4742-adc7-b4fa6d83be23",
+    "fecha": "2024-01-26",
+    "hora": "08:35",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "Carrera 12",
+    "descripcion": "Siniestro grave en El Mercado involucrando automovil.",
+    "lat": 8.243136047548424,
+    "lng": -73.36931223570141,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "ebbd1fe7-91c4-40d7-86dd-0bba918a32be",
+    "fecha": "2023-11-02",
+    "hora": "20:55",
+    "tipo": "atropello",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "automovil"
+    ],
+    "via": "Barrio Los Pinos",
+    "descripcion": "Siniestro solo_danos en Simon Bolivar involucrando motocicleta y automovil.",
+    "lat": 8.234184553675602,
+    "lng": -73.35382184938305,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "008c5cbf-4035-47bd-8658-24fe7555e11f",
+    "fecha": "2024-08-09",
+    "hora": "21:12",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "automovil"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro solo_danos en Barrio Los Pinos involucrando motocicleta y automovil.",
+    "lat": 8.249374813824906,
+    "lng": -73.36930725774302,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "8d23b5c1-baf4-4920-a125-c61d72a1f110",
+    "fecha": "2024-12-01",
+    "hora": "00:13",
+    "tipo": "otro",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro leve en La Costa involucrando bus.",
+    "lat": 8.225303849829503,
+    "lng": -73.36740877994913,
+    "condicion_clima": "lluvia",
+    "condicion_via": "humeda",
+    "dia_semana": "sabado"
+  },
+  {
+    "id": "92c6ef4e-ee8e-4d6e-af84-c0dbba2f34c2",
+    "fecha": "2023-03-22",
+    "hora": "06:35",
+    "tipo": "choque",
+    "gravedad": "grave",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro grave en San Agustin involucrando camion.",
+    "lat": 8.228414216410973,
+    "lng": -73.34998523849208,
+    "condicion_clima": "despejado",
+    "condicion_via": "deteriorada",
+    "dia_semana": "martes"
+  },
+  {
+    "id": "2e2c679e-021c-41c7-8316-f2ba2944dee8",
+    "fecha": "2024-06-06",
+    "hora": "05:12",
+    "tipo": "choque",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "camion"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro solo_danos en El Mercado involucrando motocicleta y camion.",
+    "lat": 8.236491440653385,
+    "lng": -73.36710215643136,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "viernes"
+  },
+  {
+    "id": "4d1951ea-45ec-4430-a977-cef3ce9116cb",
+    "fecha": "2024-02-20",
+    "hora": "05:45",
+    "tipo": "otro",
+    "gravedad": "grave",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro grave en Carrera 12 involucrando camion.",
+    "lat": 8.228674617806687,
+    "lng": -73.35698324641423,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "a6744963-05c6-4b57-9e86-36ae7683cbfc",
+    "fecha": "2024-05-07",
+    "hora": "19:33",
+    "tipo": "caida_motocicleta",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta"
+    ],
+    "via": "Carrera 12",
+    "descripcion": "Siniestro solo_danos en El Mercado involucrando motocicleta.",
+    "lat": 8.242379199031273,
+    "lng": -73.34348598013011,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "91271625-fed2-4113-ac77-950f21b7e6d4",
+    "fecha": "2023-09-18",
+    "hora": "14:49",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 4,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus",
+      "peaton"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro grave en Barrio Los Pinos involucrando bus y peaton.",
+    "lat": 8.249701386373298,
+    "lng": -73.35604271278523,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "b9d2af6f-176b-4579-8333-d996ed2c933b",
+    "fecha": "2023-02-06",
+    "hora": "08:08",
+    "tipo": "volcamiento",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro leve en Av. Francisco Fernandez de Contreras involucrando automovil.",
+    "lat": 8.240700235585976,
+    "lng": -73.36628561595904,
+    "condicion_clima": "lluvia",
+    "condicion_via": "buena",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "9da1757e-4bb8-4e2f-a83c-0a0a37303a67",
+    "fecha": "2024-07-23",
+    "hora": "23:15",
+    "tipo": "volcamiento",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "automovil"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro solo_danos en Carrera 12 involucrando motocicleta y automovil.",
+    "lat": 8.238794346150922,
+    "lng": -73.36602517157029,
+    "condicion_clima": "despejado",
+    "condicion_via": "buena",
+    "dia_semana": "jueves"
+  },
+  {
+    "id": "6b14ba15-b3db-4cd8-a459-d6fda0a8757c",
+    "fecha": "2024-06-06",
+    "hora": "08:07",
+    "tipo": "volcamiento",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "camion"
+    ],
+    "via": "La Costa",
+    "descripcion": "Siniestro solo_danos en La Costa involucrando motocicleta y camion.",
+    "lat": 8.239040279644389,
+    "lng": -73.35042699279013,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "f74ab2e1-0c60-4cc6-bee9-4cded71af899",
+    "fecha": "2023-01-14",
+    "hora": "05:16",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus",
+      "peaton"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro leve en Simon Bolivar involucrando bus y peaton.",
+    "lat": 8.2251529591166,
+    "lng": -73.36920056801966,
+    "condicion_clima": "niebla",
+    "condicion_via": "humeda",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "7c9846c3-8464-4580-865b-0c14d2ff0a48",
+    "fecha": "2023-11-22",
+    "hora": "04:42",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 3,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "camion",
+      "peaton"
+    ],
+    "via": "San Agustin",
+    "descripcion": "Siniestro grave en Simon Bolivar involucrando camion y peaton.",
+    "lat": 8.226842237351676,
+    "lng": -73.35497225828142,
+    "condicion_clima": "niebla",
+    "condicion_via": "humeda",
+    "dia_semana": "lunes"
+  },
+  {
+    "id": "22dc05a2-4001-48ab-8f46-b8912b5ff9fc",
+    "fecha": "2024-07-15",
+    "hora": "11:23",
+    "tipo": "atropello",
+    "gravedad": "leve",
+    "victimas": 2,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "bus"
+    ],
+    "via": "Carrera 14",
+    "descripcion": "Siniestro leve en Barrio Los Pinos involucrando bus.",
+    "lat": 8.24203299644201,
+    "lng": -73.36729564140025,
+    "condicion_clima": "lluvia",
+    "condicion_via": "deteriorada",
+    "dia_semana": "martes"
+  },
+  {
+    "id": "727c7fe9-9984-48eb-b717-35ab6d302435",
+    "fecha": "2024-09-10",
+    "hora": "20:26",
+    "tipo": "volcamiento",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "bus"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro solo_danos en Calle 10 involucrando motocicleta y bus.",
+    "lat": 8.230799926888507,
+    "lng": -73.35178866106313,
+    "condicion_clima": "lluvia",
+    "condicion_via": "humeda",
+    "dia_semana": "miercoles"
+  },
+  {
+    "id": "5d587bfa-4212-408e-a6ab-f64cd306e082",
+    "fecha": "2023-03-26",
+    "hora": "04:49",
+    "tipo": "atropello",
+    "gravedad": "grave",
+    "victimas": 1,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "automovil"
+    ],
+    "via": "El Mercado",
+    "descripcion": "Siniestro grave en San Agustin involucrando automovil.",
+    "lat": 8.22478632362275,
+    "lng": -73.35062605148121,
+    "condicion_clima": "niebla",
+    "condicion_via": "buena",
+    "dia_semana": "domingo"
+  },
+  {
+    "id": "1a1aa24e-ee68-4dda-80ed-ca8e4388a6ca",
+    "fecha": "2024-10-13",
+    "hora": "18:06",
+    "tipo": "otro",
+    "gravedad": "solo_danos",
+    "victimas": 0,
+    "fallecidos": 0,
+    "vehiculos_involucrados": [
+      "motocicleta",
+      "bus"
+    ],
+    "via": "Calle 10",
+    "descripcion": "Siniestro solo_danos en San Agustin involucrando motocicleta y bus.",
+    "lat": 8.221155993798586,
+    "lng": -73.36156743179247,
+    "condicion_clima": "despejado",
+    "condicion_via": "deteriorada",
+    "dia_semana": "martes"
+  }
+]
