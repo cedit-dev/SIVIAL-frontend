@@ -18,10 +18,22 @@ const GRAVITY_COLORS = {
   'solo_danos': '#3b82f6', // blue
 };
 
-const EstadisticasPanel = () => {
+const EstadisticasPanel = ({ theme }: { theme?: string }) => {
   const { siniestros } = useSiniestrosStore();
   const [page, setPage] = useState(0);
   const itemsPerPage = 10;
+  
+  const isLight = theme === 'light';
+  
+  // Dynamic colors for Charts
+  const chartColors = {
+    grid: isLight ? 'rgba(0,0,0,0.06)' : '#ffffff10',
+    axisX: isLight ? '#888888' : '#94a3b8',
+    axisY: isLight ? '#444444' : '#f1f5f9',
+    tooltipBg: isLight ? '#ffffff' : '#1e293b',
+    tooltipBorder: isLight ? 'rgba(0,0,0,0.1)' : '#334155',
+    tooltipText: isLight ? '#1a1a2e' : '#f1f5f9',
+  };
 
   if (!siniestros || siniestros.length === 0) {
     return (
@@ -45,25 +57,31 @@ const EstadisticasPanel = () => {
   const datosGravedadFormateados = getDatosPorGravedad(siniestros).map(d => {
     // map the name to match GRAVITY_COLORS key or color directly
     const key = d.name.replace(' ', '_') as keyof typeof GRAVITY_COLORS;
-    return { ...d, color: GRAVITY_COLORS[key] || '#94a3b8' };
+    // Fix: "solo danos" -> "Solo daños"
+    const displayName = d.name.toLowerCase() === 'solo danos' ? 'Solo daños' : d.name;
+    return { ...d, name: displayName, color: GRAVITY_COLORS[key] || '#94a3b8' };
   });
 
   const paginationPages = Math.ceil(siniestros.length / itemsPerPage);
   const paginatedSiniestros = siniestros.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
+  const kpiLabelColor = isLight ? 'text-[#888888]' : 'text-muted-foreground';
+  const kpiValueColor = isLight ? 'text-[#1a1a2e]' : 'text-foreground';
+  const kpiIconBg = isLight ? 'bg-[#f0ece4]' : 'bg-background';
+
   return (
-    <div className="w-full bg-background p-4 md:p-6 lg:p-8 space-y-8">
+    <div className="w-full bg-transparent p-4 md:p-6 lg:p-8 space-y-8 transition-all duration-400">
 
       {/* KPIs */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {kpis.map((kpi, i) => (
-          <div key={i} className="bg-card border border-border rounded-xl p-3 md:p-4 shadow-sm flex items-center gap-3">
-            <div className={`p-2 md:p-3 rounded-lg bg-background ${kpi.color}`}>
+          <div key={i} className="bg-card border border-border rounded-xl p-3 md:p-4 shadow-sm flex items-center gap-3 transition-all">
+            <div className={`p-2 md:p-3 rounded-lg ${kpiIconBg} ${kpi.color}`}>
               <kpi.icon size={20} className="md:w-6 md:h-6" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] md:text-xs font-semibold text-muted-foreground uppercase tracking-wide truncate">{kpi.label}</p>
-              <p className="text-lg md:text-xl font-bold text-foreground capitalize truncate" title={kpi.value.toString()}>
+              <p className={`text-[10px] md:text-xs font-semibold ${kpiLabelColor} uppercase tracking-wide truncate transition-colors`}>{kpi.label}</p>
+              <p className={`text-lg md:text-xl font-bold ${kpiValueColor} capitalize truncate transition-colors`} title={kpi.value.toString()}>
                 {kpi.value}
               </p>
             </div>
@@ -80,10 +98,14 @@ const EstadisticasPanel = () => {
           <div className="h-[250px] md:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={getDatosPorTipo(siniestros)} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" horizontal={true} vertical={false} />
-                <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <YAxis dataKey="name" type="category" tick={{ fill: '#f1f5f9', fontSize: 10 }} width={80} />
-                <Tooltip cursor={{ fill: '#ffffff05' }} contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', fontSize: '12px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} horizontal={true} vertical={false} />
+                <XAxis type="number" tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <YAxis dataKey="name" type="category" tick={{ fill: chartColors.axisY, fontSize: 10 }} width={80} />
+                <Tooltip 
+                   cursor={{ fill: isLight ? 'rgba(0,0,0,0.02)' : '#ffffff05' }} 
+                   contentStyle={{ backgroundColor: chartColors.tooltipBg, border: `1px solid ${chartColors.tooltipBorder}`, color: chartColors.tooltipText, fontSize: '12px' }} 
+                   itemStyle={{ color: chartColors.tooltipText }}
+                />
                 <Bar dataKey="value" fill="#e63946" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -109,7 +131,7 @@ const EstadisticasPanel = () => {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', fontSize: '12px' }} />
+                <Tooltip contentStyle={{ backgroundColor: chartColors.tooltipBg, border: `1px solid ${chartColors.tooltipBorder}`, color: chartColors.tooltipText, fontSize: '12px' }} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -121,10 +143,10 @@ const EstadisticasPanel = () => {
           <div className="h-[250px] md:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={getDatosPorDia(siniestros)}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                <XAxis dataKey="name" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <YAxis tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <Tooltip cursor={{ fill: '#ffffff05' }} contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', fontSize: '12px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} vertical={false} />
+                <XAxis dataKey="name" tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <YAxis tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <Tooltip cursor={{ fill: isLight ? 'rgba(0,0,0,0.02)' : '#ffffff05' }} contentStyle={{ backgroundColor: chartColors.tooltipBg, border: `1px solid ${chartColors.tooltipBorder}`, color: chartColors.tooltipText, fontSize: '12px' }} />
                 <Bar dataKey="value" fill="#f59e0b" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -137,10 +159,10 @@ const EstadisticasPanel = () => {
           <div className="h-[250px] md:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={getDatosPorHora(siniestros)}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                <XAxis dataKey="hora" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <YAxis tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', fontSize: '12px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} vertical={false} />
+                <XAxis dataKey="hora" tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <YAxis tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <Tooltip contentStyle={{ backgroundColor: chartColors.tooltipBg, border: `1px solid ${chartColors.tooltipBorder}`, color: chartColors.tooltipText, fontSize: '12px' }} />
                 <Area type="monotone" dataKey="cantidad" stroke="#e63946" fill="#e63946" fillOpacity={0.3} />
               </AreaChart>
             </ResponsiveContainer>
@@ -153,10 +175,10 @@ const EstadisticasPanel = () => {
           <div className="h-[250px] md:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={getDatosPorVehiculo(siniestros)} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" horizontal={true} vertical={false} />
-                <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <YAxis dataKey="name" type="category" tick={{ fill: '#f1f5f9', fontSize: 10 }} width={80} />
-                <Tooltip cursor={{ fill: '#ffffff05' }} contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', fontSize: '12px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} horizontal={true} vertical={false} />
+                <XAxis type="number" tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <YAxis dataKey="name" type="category" tick={{ fill: chartColors.axisY, fontSize: 10 }} width={80} />
+                <Tooltip cursor={{ fill: isLight ? 'rgba(0,0,0,0.02)' : '#ffffff05' }} contentStyle={{ backgroundColor: chartColors.tooltipBg, border: `1px solid ${chartColors.tooltipBorder}`, color: chartColors.tooltipText, fontSize: '12px' }} />
                 <Bar dataKey="value" fill="#3b82f6" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -169,10 +191,10 @@ const EstadisticasPanel = () => {
           <div className="h-[250px] md:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={getDatosPorMes(siniestros)}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                <XAxis dataKey="mes" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <YAxis tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                <Tooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155', fontSize: '12px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} vertical={false} />
+                <XAxis dataKey="mes" tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <YAxis tick={{ fill: chartColors.axisX, fontSize: 10 }} />
+                <Tooltip contentStyle={{ backgroundColor: chartColors.tooltipBg, border: `1px solid ${chartColors.tooltipBorder}`, color: chartColors.tooltipText, fontSize: '12px' }} />
                 <Line type="monotone" dataKey="cantidad" stroke="#f59e0b" strokeWidth={3} dot={{ r: 4, fill: '#f59e0b' }} />
               </LineChart>
             </ResponsiveContainer>
@@ -186,7 +208,7 @@ const EstadisticasPanel = () => {
         <h3 className="text-base md:text-lg font-bold text-foreground mb-4">Listado de Siniestros ({siniestros.length})</h3>
         <div className="overflow-x-auto -mx-4 md:mx-0">
           <table className="w-full text-[13px] md:text-sm text-left">
-            <thead className="text-[10px] md:text-xs text-muted-foreground uppercase bg-background">
+            <thead className={`text-[10px] md:text-xs text-muted-foreground uppercase ${isLight ? 'bg-[#f0ece4]' : 'bg-background'}`}>
               <tr>
                 <th className="px-3 md:px-4 py-3 rounded-tl-lg">Fecha</th>
                 <th className="px-3 md:px-4 py-3 hidden sm:table-cell">Hora</th>
@@ -199,7 +221,7 @@ const EstadisticasPanel = () => {
             </thead>
             <tbody>
               {paginatedSiniestros.map((s) => (
-                <tr key={s.id} className="border-b border-border hover:bg-white/5 transition-colors cursor-pointer">
+                <tr key={s.id} className="border-b border-border hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">
                   <td className="px-3 md:px-4 py-3 font-medium whitespace-nowrap">{s.fecha}</td>
                   <td className="px-3 md:px-4 py-3 hidden sm:table-cell">{s.hora}</td>
                   <td className="px-3 md:px-4 py-3 capitalize">{s.tipo.replace('_', ' ')}</td>
@@ -233,14 +255,18 @@ const EstadisticasPanel = () => {
               <button
                 onClick={() => setPage(Math.max(0, page - 1))}
                 disabled={page === 0}
-                className="flex-1 sm:flex-none px-3 py-1.5 md:py-1 bg-background border border-border rounded text-xs md:text-sm disabled:opacity-50 hover:bg-muted font-medium"
+                className={`flex-1 sm:flex-none px-3 py-1.5 md:py-1 rounded text-xs md:text-sm disabled:opacity-50 font-medium ${
+                   isLight ? 'bg-white border border-border hover:bg-[#f0ece4]' : 'bg-background border border-border hover:bg-muted'
+                }`}
               >
                 Anterior
               </button>
               <button
                 onClick={() => setPage(Math.min(paginationPages - 1, page + 1))}
                 disabled={page === paginationPages - 1}
-                className="flex-1 sm:flex-none px-3 py-1.5 md:py-1 bg-background border border-border rounded text-xs md:text-sm disabled:opacity-50 hover:bg-muted font-medium"
+                className={`flex-1 sm:flex-none px-3 py-1.5 md:py-1 rounded text-xs md:text-sm disabled:opacity-50 font-medium ${
+                   isLight ? 'bg-white border border-border hover:bg-[#f0ece4]' : 'bg-background border border-border hover:bg-muted'
+                }`}
               >
                 Siguiente
               </button>

@@ -1,7 +1,24 @@
-import { Info, X, Car, User, RefreshCw, Bike, PawPrint, AlertTriangle } from 'lucide-react';
 import { useState } from 'react';
+import { Info, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { getIconPath } from './MapComponent';
 
-const LeyendaMapa = () => {
+const MapIcon = ({ tipo }: { tipo: string }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="16" 
+    height="16" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    dangerouslySetInnerHTML={{ __html: getIconPath(tipo) }}
+  />
+);
+
+const LeyendaMapa = ({ isFullscreen }: { isFullscreen?: boolean }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const gravedades = [
@@ -12,26 +29,34 @@ const LeyendaMapa = () => {
     ];
 
     const tipos = [
-        { label: 'Choque', icon: <Car size={16} />, desc: 'Colisión entre vehículos' },
-        { label: 'Atropello', icon: <User size={16} />, desc: 'Impacto a peatón' },
-        { label: 'Volcamiento', icon: <RefreshCw size={16} />, desc: 'Vehículo volcado' },
-        { label: 'Caída Moto', icon: <Bike size={16} />, desc: 'Caída de ocupante de moto' },
-        { label: 'Animal', icon: <PawPrint size={16} />, desc: 'Choque con semoviente' },
-        { label: 'Otro', icon: <AlertTriangle size={16} />, desc: 'Incendio, caída de objeto, etc.' },
+        { label: 'Choque', icon: <MapIcon tipo="choque" />, desc: 'Colisión entre vehículos' },
+        { label: 'Atropello', icon: <MapIcon tipo="atropello" />, desc: 'Impacto a peatón' },
+        { label: 'Volcamiento', icon: <MapIcon tipo="volcamiento" />, desc: 'Vehículo volcado' },
+        { label: 'Caída Moto', icon: <MapIcon tipo="motocicleta" />, desc: 'Caída de ocupante de moto' },
+        { label: 'Animal', icon: <MapIcon tipo="animal" />, desc: 'Choque con semoviente' },
+        { label: 'Otro', icon: <MapIcon tipo="otro" />, desc: 'Incendio, caída de objeto, etc.' },
     ];
 
     return (
-        <div className="absolute bottom-4 left-4 z-[1000] flex flex-col items-start gap-2">
+        <>
             {!isOpen ? (
-                <button
-                    onClick={() => setIsOpen(true)}
-                    className="p-3 bg-card/90 backdrop-blur-md border border-border rounded-full shadow-2xl text-foreground hover:bg-primary hover:text-white transition-all transform hover:scale-110 active:scale-95 group"
-                    title="Ver Leyenda"
-                >
-                    <Info size={22} className="group-hover:animate-pulse" />
-                </button>
+                <div className={`absolute bottom-4 left-4 ${isFullscreen ? 'z-[9999]' : 'z-[1000]'}`}>
+                    <button
+                        onClick={() => setIsOpen(true)}
+                        className="p-3 bg-card/90 backdrop-blur-md border border-border rounded-full shadow-2xl text-foreground hover:bg-primary hover:text-white transition-all transform hover:scale-110 active:scale-95 group cursor-pointer"
+                        title="Ver Leyenda"
+                    >
+                        <Info size={22} className="group-hover:animate-pulse" />
+                    </button>
+                </div>
             ) : (
-                <div className="w-72 bg-card/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl p-5 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <motion.div 
+                    drag 
+                    dragMomentum={false}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`fixed bottom-4 left-4 w-72 bg-card/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl p-5 ${isFullscreen ? 'z-[9999]' : 'z-[1000]'} cursor-grab active:cursor-grabbing`}
+                >
                     <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                         <div className="flex items-center gap-2">
                             <Info size={18} className="text-primary" />
@@ -39,7 +64,8 @@ const LeyendaMapa = () => {
                         </div>
                         <button 
                             onClick={() => setIsOpen(false)}
-                            className="p-1 hover:bg-white/10 rounded-full transition-colors"
+                            className="p-1 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                            title="Cerrar"
                         >
                             <X size={16} />
                         </button>
@@ -79,9 +105,9 @@ const LeyendaMapa = () => {
                     <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-center">
                         <p className="text-[9px] text-muted-foreground italic">Datos oficiales de Siniestralidad Vial</p>
                     </div>
-                </div>
+                </motion.div>
             )}
-        </div>
+        </>
     );
 };
 

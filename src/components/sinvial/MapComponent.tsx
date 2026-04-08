@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.heat';
 
 import { useSiniestrosStore } from '@/store/useSiniestrosStore';
-import { ShieldAlert } from 'lucide-react';
+import { ShieldAlert, Layers } from 'lucide-react';
 
 const getGravedadColor = (gravedad: string) => {
   switch (gravedad) {
@@ -53,15 +53,15 @@ const HeatmapLayer = ({ data }: { data: any[] }) => {
   return null;
 };
 
-const getIconPath = (tipo: string) => {
+export const getIconPath = (tipo: string) => {
   const t = tipo.toLowerCase();
   if (t.includes('choque')) {
     // Two cars colliding
     return `<path d="M7 10h10M4 14l3-3m13 3l-3-3M5 18h14M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M9 6v2M15 6v2" stroke-width="2.5"/><path d="M12 2v6" stroke-width="3" stroke="currentColor"/>`;
   }
   if (t.includes('atropello')) {
-    // Person icon
-    return `<circle cx="12" cy="5" r="3"/><path d="M12 8v8M7 12h10M10 21l2-5 2 5"/>`;
+    // Pedestrian being hit (Silhouette)
+    return `<circle cx="16" cy="6" r="2.5" fill="currentColor"/><path d="M12 12l4-2 3 4M14 17l2-5 2 2M4 15l6-3" stroke-width="2.5"/><path d="M2 17h4" stroke-width="1.5"/>`;
   }
   if (t.includes('volcamiento')) {
     // Car upside down
@@ -72,20 +72,30 @@ const getIconPath = (tipo: string) => {
     return `<circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 18H5V11L9 10L12 13H18M12 13V10H16"/>`;
   }
   if (t.includes('animal')) {
-    // Paw or generic quadruped
-    return `<path d="M11 5L9 9M13 5L15 9M12 12a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 11l2 2M20 11l-2 2"/>`;
+    // Quadruped profile (Dog/Cow silhouette)
+    return `<path d="M4 11h9l3 2h2l-1 4h-2l-1-4h-3l-1 4h-2l-1-4h-3z" stroke-width="2.5"/>`;
   }
   // Generic / Otros
   return `<path d="M12 2L2 22h20L12 2zM12 17h.01M12 10v5" stroke-width="2"/>`;
 };
 
 // Create custom SVG markers
-const createCustomIcon = (color: string, tipo: string) => {
+export const createCustomIcon = (color: string, tipo: string, victimas: number = 0) => {
   const iconContent = getIconPath(tipo);
+  
+  // Victims badge (only if > 1)
+  const badge = victimas > 1 ? `
+    <g transform="translate(18, 0)">
+      <circle cx="4" cy="4" r="7" fill="#e11d48" stroke="white" stroke-width="1.2"/>
+      <text x="4" y="7.5" text-anchor="middle" font-size="9" fill="white" font-family="Inter, sans-serif" font-weight="bold">${victimas}</text>
+    </g>
+  ` : '';
+
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="-2 -6 32 32" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="10" fill="${color}22" stroke-width="1"/>
       ${iconContent}
+      ${badge}
     </svg>`;
     
   return new L.DivIcon({
@@ -105,7 +115,7 @@ const PuntosLayer = ({ data }: { data: any[] }) => {
         <Marker 
           key={siniestro.id} 
           position={[siniestro.lat, siniestro.lng]}
-          icon={createCustomIcon(getGravedadColor(siniestro.gravedad), siniestro.tipo)}
+          icon={createCustomIcon(getGravedadColor(siniestro.gravedad), siniestro.tipo, siniestro.victimas)}
         >
           <Popup className="custom-popup">
             <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
@@ -127,15 +137,15 @@ const PuntosLayer = ({ data }: { data: any[] }) => {
               <span className="attr-value capitalize">{siniestro.tipo.replace('_', ' ')}</span>
             </div>
             <div className="attr-row">
-              <span className="attr-label">Vía/Sector</span>
+              <span className="attr-label">Va/Sector</span>
               <span className="attr-value">{siniestro.via}</span>
             </div>
             <div className="attr-row">
-              <span className="attr-label">Víctimas / Fallecidos</span>
+              <span className="attr-label">Vctimas / Fallecidos</span>
               <span className="attr-value">{siniestro.victimas} / {siniestro.fallecidos}</span>
             </div>
             <div className="attr-row">
-              <span className="attr-label">Vehículos</span>
+              <span className="attr-label">Vehculos</span>
               <span className="attr-value capitalize">{siniestro.vehiculos_involucrados.join(', ')}</span>
             </div>
           </Popup>
@@ -150,34 +160,68 @@ const ResizeHandler = () => {
   
   useEffect(() => {
     if (!map) return;
-
-    // Force a first update
     map.invalidateSize();
-
-    // Use ResizeObserver for more accuracy than window resize
-    const container = map.getContainer();
-    const observer = new ResizeObserver(() => {
-      // Small timeout to allow transition/animation to finish if any
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 200);
-    });
-
-    observer.observe(container);
-
-    // Initial brute-force invalidation sequence
-    const intervals = [100, 500, 1000, 2000, 5000];
-    const timers = intervals.map(ms => setTimeout(() => {
-      map.invalidateSize();
-    }, ms));
-
-    return () => {
-      observer.disconnect();
-      timers.forEach(t => clearTimeout(t));
-    };
   }, [map]);
 
   return null;
+};
+
+const MapSelector = ({ activeLayerId, onSelect }: { activeLayerId: string, onSelect: (id: string) => void }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const selectorRef = useRef<HTMLDivElement>(null);
+
+  const layers = [
+    { id: 'oscuro', name: 'Oscuro', color: '#1a1a2e' },
+    { id: 'claro', name: 'Claro', color: '#f0ede8' },
+    { id: 'satellite', name: 'Satélite', color: '#2d4a1e' },
+    { id: 'streets', name: 'Calles', color: '#e8e0d0' },
+    { id: 'terrain', name: 'Terreno', color: '#c8d8a0' }
+  ];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (selectorRef.current && !selectorRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={selectorRef} className="absolute bottom-[16px] right-[60px] z-[1000] flex flex-col items-end">
+      {isOpen && (
+        <div className="mb-3 p-3 bg-card/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+           <p className="text-[10px] font-black uppercase text-muted-foreground mb-3 px-1 tracking-widest">Mapa Base</p>
+           <div className="grid grid-cols-3 gap-3">
+            {layers.map((l) => (
+              <button
+                key={l.id}
+                onClick={() => {
+                  onSelect(l.id);
+                  setIsOpen(false);
+                }}
+                className={`flex flex-col items-center gap-1.5 p-1 rounded-xl transition-all hover:scale-105 active:scale-95`}
+              >
+                <div 
+                  className={`w-14 h-11 rounded-lg shadow-inner border transition-all ${activeLayerId === l.id ? 'border-[#c0392b] border-2 scale-105' : 'border-white/10 opacity-80'}`} 
+                  style={{ backgroundColor: l.color }}
+                />
+                <span className={`text-[10px] font-bold leading-none ${activeLayerId === l.id ? 'text-[#c0392b]' : 'text-foreground'}`}>{l.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-[38px] h-[38px] flex items-center justify-center rounded-full bg-card border border-border shadow-md hover:bg-muted transition-all active:scale-90 text-inherit"
+        title="Tipo de Mapa"
+      >
+        <Layers size={18} className={isOpen ? 'text-[#c0392b]' : 'text-primary'} />
+      </button>
+    </div>
+  );
 };
 
 const CenterControl = () => {
@@ -185,29 +229,52 @@ const CenterControl = () => {
   const OCANA_CENTER: [number, number] = [8.2344, -73.3566];
 
   return (
-    <div className="leaflet-top leaflet-left !top-[110px]">
-      <div className="leaflet-control leaflet-bar">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            map.flyTo(OCANA_CENTER, 14, { duration: 1.5 });
-          }}
-          className="w-[38px] h-[38px] flex items-center justify-center bg-[#1e293b] text-[#f1f5f9] hover:bg-[#334155] border-none transition-all shadow-md rounded-lg"
-          title="Centrar en Ocaña"
-        >
-          <div className="flex flex-col items-center justify-center">
-             <ShieldAlert size={18} className="text-primary" />
-          </div>
-        </button>
-      </div>
+    <div className="absolute top-[168px] left-[12px] z-[1000]">
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          map.flyTo(OCANA_CENTER, 14, { duration: 1.5 });
+        }}
+        className="w-[38px] h-[38px] flex items-center justify-center bg-card text-foreground hover:bg-muted border border-border transition-all shadow-md rounded-full"
+        title="Centrar en Ocaña"
+      >
+        <div className="flex flex-col items-center justify-center">
+           <ShieldAlert size={18} className="text-primary" />
+        </div>
+      </button>
     </div>
   );
 };
 
-export default function MapComponent({ modoCalor }: { modoCalor: boolean }) {
+export default function MapComponent({ modoCalor, theme }: { modoCalor: boolean, theme?: string }) {
   const { siniestros } = useSiniestrosStore();
+  const [activeLayer, setActiveLayer] = useState(localStorage.getItem('sinvial_maplayer') || 'dark');
   const OCANA_CENTER: [number, number] = [8.2344, -73.3566];
+
+  useEffect(() => {
+    localStorage.setItem('sinvial_maplayer', activeLayer);
+  }, [activeLayer]);
+
+  const getTileUrl = () => {
+    switch (activeLayer) {
+      case 'satellite': return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+      case 'streets': return 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      case 'terrain': return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
+      case 'claro': return 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+      case 'oscuro': return 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+      default: 
+        return theme === 'light' 
+          ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+          : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+    }
+  };
+
+  const getAttribution = () => {
+    if (activeLayer === 'satellite' || activeLayer === 'terrain') return 'Tiles &copy; Esri';
+    if (activeLayer === 'streets') return '&copy; OpenStreetMap';
+    return '&copy; CARTO';
+  };
 
   return (
     <div style={{ width: '100%', height: '100%', minHeight: '400px', position: 'relative' }}>
@@ -220,9 +287,10 @@ export default function MapComponent({ modoCalor }: { modoCalor: boolean }) {
       >
         <ResizeHandler />
         <CenterControl />
+        <MapSelector activeLayerId={activeLayer} onSelect={setActiveLayer} />
         <TileLayer
-          attribution='&copy; CARTO'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution={getAttribution()}
+          url={getTileUrl()}
         />
         
         {modoCalor ? (

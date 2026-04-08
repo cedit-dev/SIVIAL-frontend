@@ -49,6 +49,7 @@
     --sidebar-ring: 355 78% 56%;
   }
 
+
   .dark {
     --background: 222 47% 11%;
     --foreground: 210 40% 96%;
@@ -178,34 +179,50 @@
   }
 }
 
-/* Leaflet overrides — clean & modern */
+/* Leaflet overrides â€” clean & modern */
 .leaflet-container {
   font-family: 'Inter', system-ui, sans-serif !important;
   width: 100%;
   height: 100%;
-  background: #0f172a !important; /* Dark fallback */
+  background: #0d1117 !important;
+  transition: background-color 0.4s ease !important;
 }
 
+.light-theme .leaflet-container {
+  background: #e8e0d0 !important;
+}
+
+/* Zoom Controls */
 .leaflet-control-zoom {
   border: none !important;
-  border-radius: 14px !important;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  box-shadow: none !important;
 }
 
 .leaflet-control-zoom a {
-  background: #1e293b !important; /* Slate-800 */
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  background: #1e293b !important;
   color: #f1f5f9 !important;
-  border: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   width: 38px !important;
   height: 38px !important;
-  line-height: 38px !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  transition: all 0.15s ease !important;
+  line-height: 36px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  font-size: 18px !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.light-theme .leaflet-control-zoom a {
+  background: #ffffff !important;
+  color: #1a1a2e !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
 .leaflet-control-zoom a:hover {
@@ -308,7 +325,7 @@
   }
 }
 
-/* Leaflet zoom control — bottom-left alignment fix */
+/* Leaflet zoom control â€” bottom-left alignment fix */
 .leaflet-bottom.leaflet-left {
   bottom: 30px !important;
   left: 10px !important;
@@ -336,4 +353,181 @@
   .leaflet-container {
     background: white !important;
   }
+}
+/* 1. Global Rounded Pill Shape for All Map Controls */
+.leaflet-control-zoom,
+.leaflet-control-zoom a,
+.floating-control button,
+.rounded-button-pill {
+  border-radius: 999px !important;
+}
+
+.leaflet-control-zoom {
+  gap: 4px !important;
+  background: transparent !important;
+}
+
+.leaflet-control-zoom a {
+  margin-bottom: 0 !important;
+}
+
+/* 2. Global Transitions for Harmonic Theme Switching */
+* {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease !important;
+}
+
+/* 3. Global Floating Controls Resets */
+.floating-control {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 4. LIGHT THEME DEFINITIONS (Requested Specs) */
+
+.light-theme {
+  --background: 0 0% 97%; /* #f8f8f8 */
+  --foreground: 240 28% 15%; /* #1a1a2e */
+  --card: 0 0% 100%; /* #ffffff */
+  --secondary: 210 40% 96%; /* #f1f5f9 */
+  --secondary-foreground: 240 28% 15%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 240 10% 40%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 240 28% 15%;
+  --border: 0 0% 0% / 0.12;
+}
+
+/* Floating Buttons (Filtros, info, stats, zoom, etc.) */
+.light-theme .floating-control button,
+.light-theme .leaflet-control-zoom a {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  color: #1a1a2e !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+.light-theme .floating-control button:hover,
+.light-theme .leaflet-control-zoom a:hover {
+  background: #f0f0f0 !important;
+}
+
+/* Puntos / Calor Buttons (Top Right) */
+.light-theme .btn-puntos-activo,
+.light-theme .btn-calor-activo {
+  background: #c0392b !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.light-theme .btn-map-inactive {
+  background: #ffffff !important;
+  color: #1a1a2e !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+}
+
+/* Filter Panel */
+.light-theme aside.bg-card,
+.light-theme #filtros-panel-container {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+.light-theme #filtros-panel-container h2,
+.light-theme #filtros-panel-container label {
+  color: #1a1a2e !important;
+}
+
+.light-theme #filtros-panel-container .text-muted-foreground {
+  color: #555 !important;
+}
+
+.light-theme #filtros-panel-container input[type="date"],
+.light-theme #filtros-panel-container select {
+  background: #f5f5f5 !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
+  color: #1a1a2e !important;
+}
+
+.light-theme #filtros-panel-container input[type="checkbox"] {
+  accent-color: #c0392b !important;
+}
+
+.light-theme #filtros-panel-container button.text-primary {
+  color: #c0392b !important;
+}
+
+/* Stats Panel */
+.light-theme #analytics-panel {
+  background: #eae6df !important;
+  border-top-color: rgba(0,0,0,0.08) !important;
+  transition: background-color 0.4s ease !important;
+}
+
+.light-theme #analytics-panel .bg-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+.light-theme #analytics-panel .text-muted-foreground {
+  color: #888888 !important;
+}
+
+.light-theme #analytics-panel .text-foreground,
+.light-theme #analytics-panel .text-lg,
+.light-theme #analytics-panel .text-xl {
+  color: #1a1a2e !important;
+}
+
+/* Legend (LeyendaMapa) */
+.light-theme .bg-card\/90, 
+.light-theme .bg-card\/95 {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  color: #1a1a2e !important;
+}
+
+/* Popup Light Theme */
+.light-theme .leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #1a1a2e !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+}
+
+.light-theme .leaflet-popup-tip {
+  background: #ffffff !important;
+}
+
+.light-theme .custom-popup h3 {
+  color: #1a1a2e !important;
+  border-bottom-color: rgba(0,0,0,0.08) !important;
+}
+
+.light-theme .custom-popup .attr-row {
+  border-bottom-color: rgba(0,0,0,0.05) !important;
+}
+
+.light-theme .custom-popup .attr-value {
+  color: #1a1a2e !important;
+}
+
+/* Leaflet Attribution Light Mode */
+.light-theme .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #444444 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .leaflet-control-attribution a {
+  color: #c0392b !important;
+}
+
+/* Legend Inner Cards */
+.light-theme .bg-muted {
+  background-color: #f4f1ec !important;
+}
+
+.light-theme .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
 }

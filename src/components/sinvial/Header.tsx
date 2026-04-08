@@ -1,4 +1,4 @@
-import { AlertTriangle, ShieldAlert, Download, Maximize, FileText, Table } from 'lucide-react';
+import { AlertTriangle, ShieldAlert, Download, Maximize, Minimize, FileText, Table, Moon, Sun } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSiniestrosStore } from '@/store/useSiniestrosStore';
 import html2canvas from 'html2canvas';
@@ -7,7 +7,12 @@ import { useState } from 'react';
 
 const currentYear = new Date().getFullYear();
 
-const Header = ({ isFullscreen, toggleFullscreen }: { isFullscreen?: boolean, toggleFullscreen?: () => void }) => {
+const Header = ({ isFullscreen, toggleFullscreen, theme, setTheme }: { 
+  isFullscreen?: boolean, 
+  toggleFullscreen?: () => void,
+  theme: string,
+  setTheme: (theme: string) => void
+}) => {
   const { siniestros } = useSiniestrosStore();
   const [isExporting, setIsExporting] = useState(false);
 
@@ -59,7 +64,7 @@ const Header = ({ isFullscreen, toggleFullscreen }: { isFullscreen?: boolean, to
   };
 
   return (
-    <header className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-background border-b border-border shadow-sm z-50 relative">
+    <header className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-background z-50 relative">
       <div className="flex items-center gap-2 md:gap-4">
         <Link to="/" className="flex items-center gap-3 group">
           <div className="flex items-center justify-center">
@@ -113,11 +118,23 @@ const Header = ({ isFullscreen, toggleFullscreen }: { isFullscreen?: boolean, to
           <button 
             onClick={toggleFullscreen}
             className="flex items-center justify-center p-2 rounded-lg bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
-            title={isFullscreen ? "Salir de pantalla completa" : "Modo Presentación"}
+            title={isFullscreen ? "Contraer" : "Expandir / Pantalla Completa"}
           >
-            <Maximize size={18} />
+            {isFullscreen ? <X size={18} /> : <Maximize size={18} />}
           </button>
         )}
+
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className={`w-10 h-10 flex items-center justify-center rounded-full border border-border transition-all active:scale-90 ${
+            theme === 'dark' 
+              ? 'bg-transparent hover:bg-white/5' 
+              : 'bg-secondary/20 hover:bg-secondary/40'
+          }`}
+          title={theme === 'dark' ? "Cambiar a Modo Claro" : "Cambiar a Modo Oscuro"}
+        >
+          {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
+        </button>
 
         <div className="hidden md:flex items-center gap-2 text-sm text-foreground bg-primary/10 px-3 py-1.5 rounded-lg border border-primary/20">
           <ShieldAlert size={16} className="text-primary" />
