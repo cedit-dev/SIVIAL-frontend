@@ -1,4 +1,4 @@
-import { AlertTriangle, ShieldAlert, Download, Maximize, Minimize, FileText, Table, Moon, Sun } from 'lucide-react';
+import { AlertTriangle, ShieldAlert, Download, Maximize, Minimize, FileText, Table, Moon, Sun, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSiniestrosStore } from '@/store/useSiniestrosStore';
 import html2canvas from 'html2canvas';

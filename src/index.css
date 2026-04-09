@@ -373,7 +373,7 @@
 
 /* 2. Global Transitions for Harmonic Theme Switching */
 * {
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease !important;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
 }
 
 /* 3. Global Floating Controls Resets */

@@ -171,11 +171,10 @@ const MapSelector = ({ activeLayerId, onSelect }: { activeLayerId: string, onSel
   const selectorRef = useRef<HTMLDivElement>(null);
 
   const layers = [
-    { id: 'oscuro', name: 'Oscuro', color: '#1a1a2e' },
-    { id: 'claro', name: 'Claro', color: '#f0ede8' },
-    { id: 'satellite', name: 'Satélite', color: '#2d4a1e' },
-    { id: 'streets', name: 'Calles', color: '#e8e0d0' },
-    { id: 'terrain', name: 'Terreno', color: '#c8d8a0' }
+    { id: 'osm', name: 'OpenStreetMap', color: '#e8e0d0' },
+    { id: 'satellite', name: 'Satélite', color: '#1e293b' },
+    { id: 'topo', name: 'Topográfico', color: '#d1d5db' },
+    { id: 'dark', name: 'Oscuro', color: '#1a1a2e' }
   ];
 
   useEffect(() => {
@@ -191,9 +190,9 @@ const MapSelector = ({ activeLayerId, onSelect }: { activeLayerId: string, onSel
   return (
     <div ref={selectorRef} className="absolute bottom-[16px] right-[60px] z-[1000] flex flex-col items-end">
       {isOpen && (
-        <div className="mb-3 p-3 bg-card/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
-           <p className="text-[10px] font-black uppercase text-muted-foreground mb-3 px-1 tracking-widest">Mapa Base</p>
-           <div className="grid grid-cols-3 gap-3">
+        <div className="mb-3 p-3 bg-card/95 backdrop-blur-xl border border-border rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200 min-w-[180px]">
+           <p className="text-[10px] font-black uppercase text-muted-foreground mb-3 px-1 tracking-widest text-center">Mapa Base</p>
+           <div className="grid grid-cols-2 gap-3">
             {layers.map((l) => (
               <button
                 key={l.id}
@@ -247,47 +246,67 @@ const CenterControl = () => {
   );
 };
 
-export default function MapComponent({ modoCalor, theme }: { modoCalor: boolean, theme?: string }) {
+export default function MapComponent({ 
+  modoCalor, 
+  theme, 
+  activeLayer: externalLayer, 
+  onLayerChange 
+}: { 
+  modoCalor: boolean, 
+  theme?: string, 
+  activeLayer?: string, 
+  onLayerChange?: (id: string) => void 
+}) {
   const { siniestros } = useSiniestrosStore();
-  const [activeLayer, setActiveLayer] = useState(localStorage.getItem('sinvial_maplayer') || 'dark');
+  
+  const [internalLayer, setInternalLayer] = useState(localStorage.getItem('sinvial_maplayer') || 'osm');
+  
+  const activeLayer = externalLayer || internalLayer;
   const OCANA_CENTER: [number, number] = [8.2344, -73.3566];
 
   useEffect(() => {
     localStorage.setItem('sinvial_maplayer', activeLayer);
   }, [activeLayer]);
 
+  const handleLayerSelect = (id: string) => {
+    setInternalLayer(id);
+    if (onLayerChange) onLayerChange(id);
+  };
+
   const getTileUrl = () => {
     switch (activeLayer) {
       case 'satellite': return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
-      case 'streets': return 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-      case 'terrain': return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}';
-      case 'claro': return 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-      case 'oscuro': return 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-      default: 
-        return theme === 'light' 
-          ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-          : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+      case 'osm': return 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      case 'topo': return 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
+      case 'dark': return 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+      default: return 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     }
   };
 
   const getAttribution = () => {
-    if (activeLayer === 'satellite' || activeLayer === 'terrain') return 'Tiles &copy; Esri';
-    if (activeLayer === 'streets') return '&copy; OpenStreetMap';
-    return '&copy; CARTO';
+    switch (activeLayer) {
+      case 'satellite': return 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+      case 'topo': return 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)';
+      case 'dark': return '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+      default: return '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    }
   };
 
   return (
-    <div style={{ width: '100%', height: '100%', minHeight: '400px', position: 'relative' }}>
+    <div 
+      className={theme === 'light' ? 'light-theme' : ''}
+      style={{ width: '100%', height: '100%', minHeight: '400px', position: 'relative' }}
+    >
       <MapContainer 
         center={OCANA_CENTER} 
-        zoom={14} 
+        zoom={15} 
         style={{ width: '100%', height: '100%' }}
         className="z-10"
         zoomControl={true}
       >
         <ResizeHandler />
         <CenterControl />
-        <MapSelector activeLayerId={activeLayer} onSelect={setActiveLayer} />
+        <MapSelector activeLayerId={activeLayer} onSelect={handleLayerSelect} />
         <TileLayer
           attribution={getAttribution()}
           url={getTileUrl()}

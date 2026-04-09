@@ -44,7 +44,11 @@ const Index = () => {
         {/* Contenedor Central del Mapa */}
         <main className="relative w-full h-full flex-1 overflow-hidden bg-[#0f172a]">
           
-          <Mapa isFullscreen={isFullscreen} theme={theme} />
+          <Mapa 
+            isFullscreen={isFullscreen} 
+            theme={theme} 
+            onToggleFullscreen={setIsFullscreen}
+          />
 
           {/* Zone 2: Filter Toggle Button (Top-Left below Zoom) */}
           <div className={`absolute top-[120px] left-[12px] ${controlZIndex} transition-all duration-300 ${showFilters ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
