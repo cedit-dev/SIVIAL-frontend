@@ -17,11 +17,11 @@ export default function Landing() {
     return (
         <div className="min-h-screen bg-background text-foreground overflow-x-hidden flex flex-col font-sans">
             
-            {/* Minimalist Navbar */}
-            <nav className="w-full flex items-center justify-between px-6 py-4 border-b border-border bg-card/80 backdrop-blur-md sticky top-0 z-50">
-                <div className="flex items-center gap-3">
-                    <img src="/logo-sinvial.png" alt="SinVial Logo" className="h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" />
-                </div>
+            {/* Minimalist Navbar - Color matched to Logo background */}
+            <nav className="w-full flex items-center justify-between px-6 py-2 bg-[#0f172a] sticky top-0 z-50 transition-all">
+                <Link to="/" className="flex items-center gap-3 group">
+                    <img src="/logo-sinvial.png" alt="SinVial Logo" className="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105" />
+                </Link>
                 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-6">
@@ -75,12 +75,13 @@ export default function Landing() {
 
             {/* Hero Section */}
             <main id="inicio" className="flex-1 relative flex flex-col items-center justify-center px-6 py-20 md:py-32 text-center min-h-[85vh] overflow-hidden">
-                {/* Background Image with Overlay */}
+                {/* AI-Generated Technical Background */}
                 <div 
-                    className="absolute inset-0 z-0 opacity-40 bg-cover bg-center bg-no-repeat grayscale-[0.5] contrast-[1.1]" 
-                    style={{ backgroundImage: 'url("/hero-road.png")' }}
+                    className="absolute inset-0 z-0 opacity-50 bg-cover bg-center bg-no-repeat transition-all duration-1000" 
+                    style={{ backgroundImage: 'url("/hero-monitoring.png")' }}
                 />
-                <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/60 via-background/80 to-background" />
+                <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/40 via-background/60 to-background" />
+                <div className="absolute inset-0 z-[2] bg-primary/5 mix-blend-overlay" />
 
                 <div className="relative z-10 flex flex-col items-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
@@ -93,7 +94,7 @@ export default function Landing() {
                     </h1>
                     
                     <p className="text-lg md:text-2xl text-slate-200 max-w-3xl mb-12 leading-relaxed font-medium drop-shadow-md">
-                        Monitoreo, análisis visual y estadísticas del comportamiento vial en Ocaña. Diseñado para la toma de decisiones institucionales y ciudadanas.
+                        Inteligencia de datos aplicada al monitoreo, análisis geoespacial y prevención de siniestros viales en el municipio de Ocaña.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-5">

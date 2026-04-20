@@ -64,31 +64,19 @@ const Header = ({ isFullscreen, toggleFullscreen, theme, setTheme }: {
   };
 
   return (
-    <header className="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-background z-50 relative">
-      <div className="flex items-center gap-2 md:gap-4">
+    <header className="flex items-center justify-between px-4 md:px-6 py-2 bg-[#0f172a] z-50 relative border-b border-white/5">
+      <div className="flex items-center gap-4">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="flex items-center justify-center">
-            <img 
-              src="/logo-sinvial.png" 
-              alt="SinVial Ocaña" 
-              className="h-12 md:h-16 w-auto object-contain transition-transform group-hover:scale-105 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" 
-            />
-          </div>
+          <img 
+            src="/logo-sinvial.png" 
+            alt="SinVial Ocaña" 
+            className="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105" 
+          />
         </Link>
-        <div className="hidden sm:block border-l border-border h-8 mx-1" />
-        <div className="hidden lg:block">
-          <p className="text-[10px] font-bold uppercase tracking-tighter text-muted-foreground leading-none">Alcaldía de Ocaña</p>
-          <p className="text-[11px] font-black text-foreground tracking-tight">Sistema de Información de Siniestros Viales</p>
-        </div>
-        {/* Original text section, modified to keep currentYear span */}
-        <div className="flex flex-col min-w-0">
-          <div className="flex items-center gap-2">
-            <h1 className="text-base md:text-xl font-bold text-foreground tracking-tight truncate">SinVial Ocaña</h1>
-            <span className="hidden xs:inline-block px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-[10px] font-semibold uppercase tracking-wider">
-              {currentYear}
-            </span>
-          </div>
-          <p className="hidden sm:block text-xs md:sm text-muted-foreground font-medium truncate">
+        <div className="hidden sm:block border-l border-border/20 h-6 mx-1" />
+        <div className="flex flex-col">
+          <h1 className="text-sm md:text-base font-bold text-white tracking-tight leading-none">SinVial Ocaña</h1>
+          <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest hidden md:block">
             Sistema de Información de Siniestros Viales
           </p>
         </div>

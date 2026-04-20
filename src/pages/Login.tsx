@@ -12,9 +12,23 @@ export default function Login() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        
         setTimeout(() => {
             setLoading(false);
-            navigate("/mapa");
+            if (email === "admin@ufpso.edu.co" && password === "12345") {
+                import("sonner").then(({ toast }) => {
+                    toast.success("Welcome, Administrator", {
+                        description: "Access granted to the SIVIAL system.",
+                    });
+                });
+                navigate("/admin/upload");
+            } else {
+                import("sonner").then(({ toast }) => {
+                    toast.error("Invalid Credentials", {
+                        description: "Please check your email and password.",
+                    });
+                });
+            }
         }, 1200);
     };
 

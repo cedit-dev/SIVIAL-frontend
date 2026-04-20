@@ -79,20 +79,11 @@ const Index = () => {
             id="filtros-panel-container" 
             style={{ transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }}
             className={`
-              absolute left-0 top-0 h-full w-full sm:w-[340px] bg-card border-r border-border shadow-2xl z-[1500]
+              absolute left-0 top-0 h-full w-full sm:w-[300px] bg-[#0f172a] border-r border-white/10 shadow-2xl z-[1500]
               ${showFilters ? 'translate-x-0' : '-translate-x-full'}
             `}
           >
-            <button 
-              id="filtros-close-btn"
-              onClick={() => setShowFilters(false)}
-              className="absolute top-4 right-4 z-50 p-1.5 rounded-full bg-background/80 hover:bg-background border border-border text-muted-foreground hover:text-foreground transition-colors shadow-sm"
-            >
-              <X size={18} />
-            </button>
-            <div className="w-full h-full pt-2">
-              <FiltrosPanel />
-            </div>
+            <FiltrosPanel onClose={() => setShowFilters(false)} />
           </div>
           
         </main>
