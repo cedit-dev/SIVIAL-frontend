@@ -1,11 +1,11 @@
-import { FileBadge2, FileText, LogOut, Map, Menu, Moon, ShieldCheck, Sun, X } from "lucide-react";
+import { FileBadge2, FileText, LogOut, Map, Menu, Moon, Sun, Upload, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { clearSession, hasEditorialAccess } from "@/lib/auth";
-import { cn } from "@/lib/utils";
 import { useAuthSession } from "@/hooks/use-auth-session";
 import { type SinVialTheme } from "@/hooks/use-sinvial-theme";
+import { cn } from "@/lib/utils";
 
 interface SinVialNavbarProps {
   theme: SinVialTheme;
@@ -30,20 +30,21 @@ export default function SinVialNavbar({ theme, setTheme }: SinVialNavbarProps) {
   };
 
   const items = [
-    { to: "/", label: "Inicio" },
+    { to: "/", label: "Inicio", icon: undefined },
     { to: "/mapa", label: "Mapa", icon: Map },
     { to: "/decretos", label: "Decretos", icon: FileBadge2 },
   ];
 
   if (hasEditorialAccess(session)) {
-    items.push({ to: "/admin/decretos", label: "Gestión", icon: FileText });
+    items.push({ to: "/admin/upload", label: "Accidentes", icon: Upload });
+    items.push({ to: "/admin/decretos", label: "Decretos Admin", icon: FileText });
   }
 
   return (
     <>
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#161b22]/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="group flex items-center gap-3">
             <img
               src="/logo-sinvial.png"
               alt="SinVial Ocaña"
@@ -118,7 +119,7 @@ export default function SinVialNavbar({ theme, setTheme }: SinVialNavbarProps) {
                     isActive ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
                   )}
                 >
-                  {Icon ? <Icon size={16} /> : <ShieldCheck size={16} />}
+                  {Icon ? <Icon size={16} /> : null}
                   {item.label}
                 </button>
               );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
     Upload, 
@@ -27,6 +27,8 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { clearSession, hasEditorialAccess } from "@/lib/auth";
+import { useAuthSession } from "@/hooks/use-auth-session";
 import {
   Select,
   SelectContent,
@@ -37,6 +39,7 @@ import {
 
 export default function AdminUpload() {
     const navigate = useNavigate();
+    const session = useAuthSession();
     const now = new Date();
     const currentHour = now.getHours();
     const [date, setDate] = useState<Date>(now);
@@ -46,6 +49,16 @@ export default function AdminUpload() {
     const [isDragging, setIsDragging] = useState(false);
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (!hasEditorialAccess(session)) {
+            navigate("/decretos", { replace: true });
+        }
+    }, [navigate, session]);
+
+    if (!hasEditorialAccess(session)) {
+        return null;
+    }
 
     const handleDragOver = (e: React.DragEvent) => {
         e.preventDefault();
@@ -119,9 +132,19 @@ export default function AdminUpload() {
                         <LayoutDashboard className="w-4 h-4 group-hover:scale-110 transition-transform" />
                         Mapa
                     </button>
+                    <button 
+                        onClick={() => navigate("/admin/decretos")}
+                        className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-white transition-all group"
+                    >
+                        <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                        Decretos
+                    </button>
                     <div className="h-4 w-[1px] bg-white/10" />
                     <button 
-                        onClick={() => navigate("/login")}
+                        onClick={() => {
+                            clearSession();
+                            navigate("/login");
+                        }}
                         className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 text-white text-xs font-black uppercase tracking-widest hover:bg-destructive/20 hover:text-destructive transition-all border border-white/10"
                     >
                         <LogOut className="w-4 h-4" />

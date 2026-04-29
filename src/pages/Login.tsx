@@ -30,7 +30,7 @@ export default function Login() {
             description: "Has ingresado como administrador.",
           });
         });
-        navigate("/admin/decretos");
+        navigate("/admin/upload");
         return;
       }
 
