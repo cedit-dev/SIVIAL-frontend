@@ -13,9 +13,9 @@ const Mapa = ({
   onToggleFullscreen?: (state: boolean) => void
 }) => {
   const [modoCalor, setModoCalor] = useState(false);
-  const [activeLayer, setActiveLayer] = useState(localStorage.getItem('sinvial_maplayer') || 'osm');
+  const [activeLayer, setActiveLayer] = useState(localStorage.getItem('sinvial_maplayer') || 'streets');
 
-  const isLightMap = activeLayer === 'osm' || activeLayer === 'topo';
+  const isLightMap = activeLayer === 'light' || activeLayer === 'streets' || activeLayer === 'terrain';
   const textColor = isLightMap ? 'text-black' : 'text-white';
 
   return (

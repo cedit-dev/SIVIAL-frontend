@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import { AlertTriangle, Map as MapIcon, ShieldCheck, BarChart3, ChevronRight, Target, Users, Phone, Mail, MapPin, Menu, X, Map } from "lucide-react";
+import { Map as MapIcon, ShieldCheck, BarChart3, ChevronRight, Target, Users, Phone, Mail, MapPin, Menu, X, FileBadge2 } from "lucide-react";
 import { useState } from 'react';
 
 export default function Landing() {
@@ -29,12 +29,16 @@ export default function Landing() {
                     <button onClick={() => scrollToSection('nosotros')} className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">Sobre Nosotros</button>
                     <button onClick={() => scrollToSection('objetivos')} className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">Objetivos</button>
                     <button onClick={() => scrollToSection('contacto')} className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">Contacto</button>
+                    <button onClick={() => navigate('/decretos')} className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">Decretos</button>
                 </div>
 
                 <div className="flex items-center gap-4">
                     <div className="hidden md:flex items-center gap-4 border-l border-border pl-4">
                         <button onClick={() => navigate('/mapa')} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
                             <MapIcon size={16} /> Mapa Interactivo
+                        </button>
+                        <button onClick={() => navigate('/decretos')} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                            <FileBadge2 size={16} /> Decretos
                         </button>
                     </div>
                     <button 
@@ -68,6 +72,12 @@ export default function Landing() {
                             className="flex items-center gap-3 text-lg font-semibold text-primary"
                         >
                             <MapIcon size={22} /> Mapa Interactivo
+                        </button>
+                        <button 
+                            onClick={() => navigate('/decretos')}
+                            className="flex items-center gap-3 text-lg font-semibold text-primary"
+                        >
+                            <FileBadge2 size={22} /> Decretos
                         </button>
                     </div>
                 </div>

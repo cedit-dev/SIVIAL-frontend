@@ -1,11 +1,9 @@
-import { AlertTriangle, ShieldAlert, Download, Maximize, Minimize, FileText, Table, Moon, Sun, X } from 'lucide-react';
+import { ShieldAlert, Download, Maximize, FileText, Table, Moon, Sun, X, FileBadge2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSiniestrosStore } from '@/store/useSiniestrosStore';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { useState } from 'react';
-
-const currentYear = new Date().getFullYear();
 
 const Header = ({ isFullscreen, toggleFullscreen, theme, setTheme }: { 
   isFullscreen?: boolean, 
@@ -83,6 +81,14 @@ const Header = ({ isFullscreen, toggleFullscreen, theme, setTheme }: {
       </div>
 
       <div className="flex items-center gap-3">
+        <Link
+          to="/decretos"
+          className="hidden items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-background md:flex"
+        >
+          <FileBadge2 size={14} />
+          Decretos
+        </Link>
+
         {/* Acciones */}
         <div className="flex bg-secondary/50 rounded-lg p-1 border border-border">
           <button 
